@@ -57,12 +57,7 @@ whichCDN http://www.example.com | example.com
 ## More docs
 
 Help is available by runnning ```whichCDN -help```
-WhichCDN is Sphinx compliante. To generate the documentation
 
 ## Contribution
 
 Pull requests for new features, bug fixes, and suggestions are welcome !
-
-## Licence
-
-[MIT](https://github.com/nishanths/license/blob/master/LICENSE)
