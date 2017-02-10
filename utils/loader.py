@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import imp
 import os
 
@@ -5,7 +6,9 @@ PluginFolder = "./plugins"
 MainModule = "__init__"
 
 def getPlugins():
-    """List the plugins located in the plugins folder."""
+    """
+    List the plugins located in the plugins folder.
+    """
 
     plugins = []
     pluginList = os.listdir(PluginFolder)
@@ -18,7 +21,8 @@ def getPlugins():
     return plugins
 
 def loadPlugin(plugin):
-    """Loads the specified plugin.
+    """
+    Loads the specified plugin.
 
     Parameters
     ----------

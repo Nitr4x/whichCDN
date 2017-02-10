@@ -1,11 +1,18 @@
+#!/usr/bin/env python
+from __future__ import print_function
 import sys
-import urlparse
-
 from utils import CDNEngine
 from utils import request
 
+if sys.version_info >= (3, 0):
+    import urllib.parse as urlparse
+else:
+    import urlparse
+
+
 def detect(hostname):
-    """Performs CDN detection thanks to HTTP headers.
+    """
+    Performs CDN detection thanks to HTTP headers.
 
     Parameters
     ----------
@@ -13,7 +20,7 @@ def detect(hostname):
         Hostname to assess
     """
 
-    print '[+] HTTP header detection\n'
+    print('[+] HTTP header detection\n')
 
     hostname = urlparse.urlparse(hostname).scheme + '://' + urlparse.urlparse(hostname).netloc
 
@@ -27,12 +34,12 @@ def detect(hostname):
 
     res = request.do(hostname)
 
-    if res == None:
+    if res is None:
         return
 
     for field, state in fields.items():
         value = res.headers.get(field)
-        if state and value != None:
+        if state and value is not None:
             CDNEngine.find(value.lower())
-        elif not state and value != None:
+        elif not state and value is not None:
             CDNEngine.find(field.lower())

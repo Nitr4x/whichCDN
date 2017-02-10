@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+from __future__ import print_function
 import sys
 
 CDN = {
@@ -16,8 +18,10 @@ CDN = {
     'msecnd.ne': 'Microsoft Azure - https://azure.microsoft.com/en-us/services/cdn/'
 }
 
+
 def find(data):
-    """Compares the provided data to the CDN supported.
+    """
+    Compares the provided data to the CDN supported.
 
     Parameters
     ----------
@@ -27,5 +31,5 @@ def find(data):
 
     for keyword, description in CDN.items():
         if data.find(keyword.lower()) != -1:
-            print '\033[1;32mCDN found: ' + description + '\033[1;m\n'
+            print('\033[1;32mCDN found: ' + description + '\033[1;m\n')
             sys.exit(0)

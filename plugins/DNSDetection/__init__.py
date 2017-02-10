@@ -1,9 +1,6 @@
-"""DNSDetection plugin performs CDN detection through nslookup results."""
+#!/usr/bin/env python
+"""
+DNSDetection plugin performs CDN detection through nslookup results.
+"""
 
-import sys
-
-sys.path.insert(0, 'plugins/')
-
-from DNSDetection.behaviors import detect
-
-sys.path.pop(0)
+from plugins.DNSDetection.behaviors import detect
