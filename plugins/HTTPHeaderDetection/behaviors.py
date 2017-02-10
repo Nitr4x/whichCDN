@@ -1,8 +1,8 @@
 import sys
 import urlparse
 
-import CDNEngine
-import request
+from utils import CDNEngine
+from utils import request
 
 def detect(hostname):
     print '[+] HTTP header detection\n'

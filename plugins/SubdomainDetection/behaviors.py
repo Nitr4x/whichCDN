@@ -1,7 +1,7 @@
 import commands
 import urlparse
 
-import CDNEngine
+from utils import CDNEngine
 
 def detect(hostname):
     print '[+] CDN subdomain detection\n'

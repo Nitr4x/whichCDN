@@ -5,8 +5,8 @@ import urlparse
 import signal
 import sys
 
-import loader
-import request
+from utils import loader
+from utils import request
 
 def parser():
     parser = argparse.ArgumentParser(description="""\

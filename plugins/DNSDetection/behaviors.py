@@ -3,7 +3,7 @@ import sys
 import urlparse
 import re
 
-import CDNEngine
+from utils import CDNEngine
 
 def detect(hostname):
     print '[+] DNS detection\n'
