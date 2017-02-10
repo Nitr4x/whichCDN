@@ -7,6 +7,14 @@ from utils import CDNEngine
 from utils import request
 
 def detect(hostname):
+    """Performs CDN detection thanks to information disclosure from server error.
+
+    Parameters
+    ----------
+    hostname : str
+        Hostname to assess
+    """
+
     print '[+] Error server detection\n'
 
     hostname = urlparse.urlparse(hostname).netloc

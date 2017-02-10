@@ -17,6 +17,14 @@ CDN = {
 }
 
 def find(data):
+    """Compares the provided data to the CDN supported.
+
+    Parameters
+    ----------
+    data : str
+        Data to analyze
+    """
+
     for keyword, description in CDN.items():
         if data.find(keyword.lower()) != -1:
             print '\033[1;32mCDN found: ' + description + '\033[1;m\n'
