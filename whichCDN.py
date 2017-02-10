@@ -5,14 +5,17 @@ import urlparse
 import signal
 import sys
 
-import loader
-import request
+from utils import loader
+from utils import request
 
 def parser():
+    """Parse arguments."""
+
     parser = argparse.ArgumentParser(description="""\
-        WhichCDN allows to detect if a given website is protected by a Content Delivery Network.\r
-        Fell free to contact the maintainer for any further questions or improvement vectors.\r
-        Maintained by Nitrax <nitrax@lokisec.fr>
+        WhichCDN allows to detect if a given website is protected by a Content
+        Delivery Network.\r Fell free to contact the maintainer for any further
+        questions or improvement vectors.\r Maintained by Nitrax
+        <nitrax@lokisec.fr>
     """)
 
     parser.add_argument('target', type=str, help='hostname to scan')
@@ -20,6 +23,19 @@ def parser():
     parser.parse_args()
 
 def sanitizeURL(hostname):
+    """Sanitizes the hostname by adding the http protocol if it has not been
+    provided.
+
+    Parameters
+    ----------
+    hostname : str
+        Hostname to assess
+
+    Return
+    ------
+    The hostname sanitized
+    """
+
     components = urlparse.urlparse(hostname)
 
     hostname = "http://" + hostname if components.scheme == '' else hostname

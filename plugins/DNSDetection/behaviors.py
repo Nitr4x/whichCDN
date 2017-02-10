@@ -3,9 +3,17 @@ import sys
 import urlparse
 import re
 
-import CDNEngine
+from utils import CDNEngine
 
 def detect(hostname):
+    """Performs CDN detection through the DNS, using the nslookup command.
+
+    Parameters
+    ----------
+    hostname : str
+        Hostname to assess
+    """
+
     print '[+] DNS detection\n'
 
     hostname = urlparse.urlparse(hostname).netloc

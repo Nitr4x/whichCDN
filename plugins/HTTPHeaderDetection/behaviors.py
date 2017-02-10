@@ -1,10 +1,18 @@
 import sys
 import urlparse
 
-import CDNEngine
-import request
+from utils import CDNEngine
+from utils import request
 
 def detect(hostname):
+    """Performs CDN detection thanks to HTTP headers.
+
+    Parameters
+    ----------
+    hostname : str
+        Hostname to assess
+    """
+
     print '[+] HTTP header detection\n'
 
     hostname = urlparse.urlparse(hostname).scheme + '://' + urlparse.urlparse(hostname).netloc

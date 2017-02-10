@@ -5,6 +5,8 @@ PluginFolder = "./plugins"
 MainModule = "__init__"
 
 def getPlugins():
+    """List the plugins located in the plugins folder."""
+
     plugins = []
     pluginList = os.listdir(PluginFolder)
     for pluginName in pluginList:
@@ -16,4 +18,16 @@ def getPlugins():
     return plugins
 
 def loadPlugin(plugin):
+    """Loads the specified plugin.
+
+    Parameters
+    ----------
+    plugin : Plugin
+        Plugin to load
+
+    Return
+    ------
+    The plugin loaded
+    """
+
     return imp.load_module(MainModule, *plugin["info"])

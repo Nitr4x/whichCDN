@@ -11,6 +11,18 @@ def requestTimeout(signum, frame):
     raise TimeoutException()
 
 def do(hostname):
+    """Performs a GET request.
+
+    Parameters
+    ----------
+    hostname : str
+        Target request
+
+    Return
+    ------
+    The request results
+    """
+
     try:
         return requests.get(hostname, timeout=10)
 
