@@ -13,8 +13,14 @@ else:
     import urlparse
 
 
+def gracefulExit(signal, frame):
+    sys.exit(0)
+
+
 def parser():
-    """Parse arguments."""
+    """
+    Parse arguments.
+    """
 
     parser = argparse.ArgumentParser(description="""\
         WhichCDN allows to detect if a given website is protected by a Content
@@ -29,7 +35,8 @@ def parser():
 
 
 def sanitizeURL(hostname):
-    """Sanitizes the hostname by adding the http protocol if it has not been
+    """
+    Sanitizes the hostname by adding the http protocol if it has not been
     provided.
 
     Parameters
@@ -62,6 +69,7 @@ if __name__ == "__main__":
     parser()
 
     signal.signal(signal.SIGALRM, request.requestTimeout)
+    signal.signal(signal.SIGINT, gracefulExit)
     signal.alarm(5)
 
     hostname = sanitizeURL(sys.argv[1])
