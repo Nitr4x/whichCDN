@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from __future__ import print_function
 import sys
 
@@ -17,7 +18,6 @@ CDN = {
     'Myracloud': 'Myra - https://myracloud.com',
     'msecnd.ne': 'Microsoft Azure - https://azure.microsoft.com/en-us/services/cdn/'
 }
-
 
 def find(data):
     """

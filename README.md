@@ -56,7 +56,7 @@ whichCDN http://www.example.com | example.com
 
 ## More docs
 
-Help is available by runnning ```whichCDN -help```
+Help is available by running ```whichCDN -help```
 
 ## Contribution
 
