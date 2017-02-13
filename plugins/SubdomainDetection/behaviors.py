@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from __future__ import print_function
 import sys
 from utils import CDNEngine
@@ -9,7 +10,6 @@ if sys.version_info >= (3, 0):
 else:
     import commands
     import urlparse
-
 
 def detect(hostname):
     """

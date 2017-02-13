@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from __future__ import print_function
 import argparse
 import signal
@@ -12,10 +13,8 @@ if sys.version_info >= (3, 0):
 else:
     import urlparse
 
-
 def gracefulExit(signal, frame):
     sys.exit(0)
-
 
 def parser():
     """
@@ -32,7 +31,6 @@ def parser():
     parser.add_argument('target', type=str, help='hostname to scan')
 
     parser.parse_args()
-
 
 def sanitizeURL(hostname):
     """
