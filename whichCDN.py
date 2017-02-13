@@ -1,15 +1,26 @@
-#!/usr/bin/python
-
+#!/usr/bin/env python
+from __future__ import print_function
 import argparse
-import urlparse
 import signal
 import sys
 
 from utils import loader
 from utils import request
 
+if sys.version_info >= (3, 0):
+    import urllib.parse as urlparse
+else:
+    import urlparse
+
+
+def gracefulExit(signal, frame):
+    sys.exit(0)
+
+
 def parser():
-    """Parse arguments."""
+    """
+    Parse arguments.
+    """
 
     parser = argparse.ArgumentParser(description="""\
         WhichCDN allows to detect if a given website is protected by a Content
@@ -22,8 +33,10 @@ def parser():
 
     parser.parse_args()
 
+
 def sanitizeURL(hostname):
-    """Sanitizes the hostname by adding the http protocol if it has not been
+    """
+    Sanitizes the hostname by adding the http protocol if it has not been
     provided.
 
     Parameters
@@ -41,24 +54,28 @@ def sanitizeURL(hostname):
     hostname = "http://" + hostname if components.scheme == '' else hostname
     return hostname
 
-print """\
- __      __.__    .__       .__    _________ ________    _______
-/  \    /  \  |__ |__| ____ |  |__ \_   ___ \\\\______ \   \      \\
-\   \/\/   /  |  \|  |/ ___\|  |  \/    \  \/ |    |  \  /   |   \\
- \        /|   Y  \  \  \___|   Y  \     \____|    `   \/    |    \\
-  \__/\  / |___|  /__|\___  >___|  /\______  /_______  /\____|__  /
-       \/       \/        \/     \/        \/        \/         \/
-"""
 
-parser()
+if __name__ == "__main__":
 
-signal.signal(signal.SIGALRM, request.requestTimeout)
-signal.alarm(5)
+    print("""
+     __      __.__    .__       .__    _________ ________    _______
+    /  \    /  \  |__ |__| ____ |  |__ \_   ___ \\\\______ \   \      \\
+    \   \/\/   /  |  \|  |/ ___\|  |  \/    \  \/ |    |  \  /   |   \\
+     \        /|   Y  \  \  \___|   Y  \     \____|    `   \/    |    \\
+      \__/\  / |___|  /__|\___  >___|  /\______  /_______  /\____|__  /
+           \/       \/        \/     \/        \/        \/         \/
+    """)
 
-hostname = sanitizeURL(sys.argv[1])
+    parser()
 
-for module in loader.getPlugins():
-    plugin = loader.loadPlugin(module)
-    plugin.detect(hostname)
+    signal.signal(signal.SIGALRM, request.requestTimeout)
+    signal.signal(signal.SIGINT, gracefulExit)
+    signal.alarm(5)
 
-print '\033[1;31mNo CDN found\033[1;m'
+    hostname = sanitizeURL(sys.argv[1])
+
+    for module in loader.getPlugins():
+        plugin = loader.loadPlugin(module)
+        plugin.detect(hostname)
+
+    print('\033[1;31mNo CDN found\033[1;m')

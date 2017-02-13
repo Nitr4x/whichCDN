@@ -1,12 +1,20 @@
-import commands
+#!/usr/bin/env python
+from __future__ import print_function
 import sys
-import urlparse
 import re
-
 from utils import CDNEngine
 
+if sys.version_info >= (3, 0):
+    import subprocess as commands
+    import urllib.parse as urlparse
+else:
+    import commands
+    import urlparse
+
+
 def detect(hostname):
-    """Performs CDN detection through the DNS, using the nslookup command.
+    """
+    Performs CDN detection through the DNS, using the nslookup command.
 
     Parameters
     ----------
@@ -14,7 +22,7 @@ def detect(hostname):
         Hostname to assess
     """
 
-    print '[+] DNS detection\n'
+    print('[+] DNS detection\n')
 
     hostname = urlparse.urlparse(hostname).netloc
     regexp = re.compile('\\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\\b')

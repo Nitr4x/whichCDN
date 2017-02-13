@@ -1,17 +1,24 @@
+#!/usr/bin/env python
+from __future__ import print_function
 import signal
 import requests
 
 class TimeoutException(Exception):
-    """ Exception called on timeouts. """
+    """
+    Exception called on timeouts.
+    """
     pass
 
 def requestTimeout(signum, frame):
-    """ Request timeout. """
+    """
+    Request timeout.
+    """
 
     raise TimeoutException()
 
 def do(hostname):
-    """Performs a GET request.
+    """
+    Performs a GET request.
 
     Parameters
     ----------
@@ -27,11 +34,11 @@ def do(hostname):
         return requests.get(hostname, timeout=10)
 
     except TimeoutException:
-        print "\033[1;31mRequest timeout: test aborted\n\033[1;m"
+        print("\033[1;31mRequest timeout: test aborted\n\033[1;m")
         return None
 
     except requests.ConnectionError:
-        print "\033[1;31mServer not found: test aborted\n\033[1;m"
+        print("\033[1;31mServer not found: test aborted\n\033[1;m")
         return None
 
     finally:
