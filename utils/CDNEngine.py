@@ -16,7 +16,8 @@ CDN = {
     'Limelight': 'Limelight -  https://www.limelight.com',
     'Fastly': 'Fastly - https://www.fastly.com/',
     'Myracloud': 'Myra - https://myracloud.com',
-    'msecnd.ne': 'Microsoft Azure - https://azure.microsoft.com/en-us/services/cdn/'
+    'msecnd.ne': 'Microsoft Azure - https://azure.microsoft.com/en-us/services/cdn/',
+    'Clever-cloud': 'Clever Cloud - https://www.clever-cloud.com/'
 }
 
 def find(data):
